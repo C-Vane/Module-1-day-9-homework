@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--
+        BINGO CHALLENGE!!!
+        Create programmatically (with JS) a BINGO board with 76 cells, from 1 to 76.
+        Create a button to randomize a number from 1 to 76. The same number should be highlighted on the bingo board
+
+        EXTRA: 
+        - Take ALWAYS a new number (avoid randoming 10 3 times for example)
+        - Create a USER BOARD with random 24 numbers that highlights as the main board does
+        - Let the user choose HOW MANY user boards he's willing to play with and create them.
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bingo</title>
+</head>
+<body>
+    <h1>BINGO</h1>
+    <div id="board">
+    </div>
+    <input type="button" onclick="randomizeNumber()" value="PLAY"/>
+</body>
+<style>
+    #board {
+        display: flex;
+        border: 1px solid greenyellow;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        height: ;
+
+
+    }
+    .cell{
+        height: 50px;
+        width: 50px;
+        background-color: rgb(148, 146, 12);
+        border: 2px solid rgb(0, 0, 0);
+
+    }
+
+</style>
+<script>
+    window.onload = function () {
+        const number_of_cells =76; // 31 in October
+        let board = document.querySelector("#board"); // getting a reference for the board div
+        for (let i = 0; i < number_of_cells; i++) {
+          const child = document.createElement("div"); // this will create an empty cell
+          child.className = "cell"; // assigning the CSS class
+          const cell = document.createElement("h3");
+          const cell_number = i + 1;
+          cell.innerText = cell_number;
+
+          child.appendChild(cell);
+          board.appendChild(child);
+
+        }
+
+    }
+    const randomizeNumber = function(){
+        let number= Math.floor(Math.random()*76)+1;
+        const cells = document.querySelectorAll(".cell");
+        let found_cell;
+        cells[number-1].style.backgroundColor='yellow'
+    }
+</script>
+</html>
